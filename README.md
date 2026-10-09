@@ -426,6 +426,7 @@ Factorial = 120
 ## Sample Output
 
 <img width="766" height="545" alt="image" src="https://github.com/user-attachments/assets/4f21acea-455b-4c58-89c7-0b05823f5592" />
+
 [Back to Index](#index)
 
 ---

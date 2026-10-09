@@ -89,7 +89,12 @@ Lakshmangarh, Rajasthan
   <tr>
     <td>8</td>
     <td>insertion sort</td>
-    <td><a href="#program-7-insertion-sort">Program 7</a></td>
+    <td><a href="#program-8-insertion-sort">Program 8</a></td>
+  </tr>
+  <tr>
+    <td>9</td>
+    <td> Number is positive,negative or zero</td>
+    <td><a href="#program-9-positive-negative-zero">Program 9</a></td>
   </tr>
 </table>
 
@@ -357,7 +362,7 @@ print("execution time" , end-start)
 
 <div style="page-break-after: always;"></div>
 
-# Program 7: insertion sort 
+# Program 8: insertion sort 
 
 ## Aim
 
@@ -393,7 +398,29 @@ print("execution time" , end-start)
 
 
 <img width="1683" height="1008" alt="image" src="https://github.com/user-attachments/assets/1fa325a6-9916-4e29-9b67-3d59cb22ca95" />
+# Program 9: Number is positive,negative or zero.
 
+## Aim
+
+To check whether a number is positive, negative, or zero
+
+## Program
+
+```python
+n = int(input("Enter a number: "))
+
+if n > 0:
+    print("Positive")
+elif n < 0:
+    print("Negative")
+else:
+    print("Zero")
+```
+
+## Sample Output
+Enter a number: 5
+Positive
+<img width="766" height="545" alt="image" src="https://github.com/user-attachments/assets/4f21acea-455b-4c58-89c7-0b05823f5592" />
 
 
 <div style="page-break-after: always;"></div>

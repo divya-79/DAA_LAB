@@ -95,3 +95,307 @@ Lakshmangarh, Rajasthan
 
 
 ---
+<div style="page-break-after: always;"></div>
+
+# Program 1: Addition of Two Numbers
+
+## Aim
+
+To write a Python program to find the sum of two numbers.
+
+## Program
+
+```python
+a = int(input("Enter first number: "))
+b = int(input("Enter second number: "))
+
+sum = a + b
+
+print("Sum =", sum)
+```
+
+## Sample Output
+
+```text
+Enter first number: 10
+Enter second number: 20
+Sum = 30
+```
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/5bd74bc0-ddb4-4295-87d6-dc97accbae54" />
+
+
+
+[Back to Index](#index)
+
+---
+
+<div style="page-break-after: always;"></div>
+
+# Program 2: Largest of Three Numbers
+
+## Aim
+
+To write a Python program to find the largest among three numbers.
+
+## Program
+
+```python
+a = int(input("Enter first number: "))
+b = int(input("Enter second number: "))
+c = int(input("Enter third number: "))
+
+if a >= b and a >= c:
+    largest = a
+elif b >= a and b >= c:
+    largest = b
+else:
+    largest = c
+
+print("Largest number =", largest)
+```
+
+## Sample Output
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/76edd186-3641-4ca2-96e9-bf904450f876" />
+
+
+```text
+Enter first number: 10
+Enter second number: 25
+Enter third number: 15
+Largest number = 25
+```
+
+[Back to Index](#index)
+
+---
+
+<div style="page-break-after: always;"></div>
+
+# Program 3: Factorial of a Number
+
+## Aim
+
+To write a Python program to calculate the factorial of a given number.
+
+## Program
+
+```python
+n = int(input("Enter a number: "))
+
+fact = 1
+
+for i in range(1, n + 1):
+    fact = fact * i
+
+print("Factorial =", fact)
+```
+
+## Sample Output
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/935b32d6-b197-4885-bf3d-6b5d3fe71320" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/760e4edf-a007-4985-829a-86b0ba3c51d5" />
+
+
+
+```text
+Enter a number: 5
+Factorial = 120
+```
+
+[Back to Index](#index)
+
+---
+
+<div style="page-break-after: always;"></div>
+
+# Program 4: Prime Number Check
+
+## Aim
+
+To write a Python program to check whether a given number is prime or not.
+
+## Program
+
+```python
+n = int(input("Enter a number: "))
+
+prime = True
+
+if n < 2:
+    prime = False
+else:
+    for i in range(2, n):
+        if n % i == 0:
+            prime = False
+            break
+
+if prime:
+    print(n, "is a Prime Number")
+else:
+    print(n, "is not a Prime Number")
+```
+
+## Sample Output
+
+```text
+Enter a number: 7
+7 is a Prime Number
+```
+
+[Back to Index](#index)
+
+---
+
+<div style="page-break-after: always;"></div>
+
+# Program 5: Fibonacci Series
+
+## Aim
+
+To write a Python program to generate the Fibonacci series.
+
+## Program
+
+```python
+n = int(input("Enter number of terms: "))
+
+a = 0
+b = 1
+
+for i in range(n):
+    print(a, end=" ")
+    a, b = b, a + b
+```
+
+## Sample Output
+
+```text
+Enter number of terms: 7
+0 1 1 2 3 5 8
+```
+
+
+[Back to Index](#index)
+
+---
+
+<div style="page-break-after: always;"></div>
+
+# Program 6: Bubble sort 
+
+## Aim
+
+To write a Python program to sort numbers from bubble sort.
+
+## Program
+
+```python
+import time
+
+start=time.time()
+
+def bubble_sort(arr):
+    n = len(arr)
+
+    for i in range(n):
+        for j in range(0, n - i - 1):
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+
+    return arr
+
+
+print(bubble_sort([5, 2, 8, 1, 3]))
+end=time.time()
+print("execution time" , end-start)
+```
+
+## Sample Output
+
+<img width="1548" height="446" alt="image" src="https://github.com/user-attachments/assets/efd4bc1a-f107-4b20-a3ec-5d911086bfc8" />
+
+
+---
+
+<div style="page-break-after: always;"></div>
+
+# Program 7: selection sort 
+
+## Aim
+
+To write a Python program to sort numbers from selection sort.
+
+## Program
+
+```python
+import time
+
+start=time.time()
+
+arr = [5, 3, 8, 4, 2]
+
+for i in range(len(arr)):
+    min_index = i
+    for j in range(i + 1, len(arr)):
+        if arr[j] < arr[min_index]:
+            min_index = j
+
+    arr[i], arr[min_index] = arr[min_index], arr[i]
+
+print(arr)
+
+end=time.time()
+print("execution time" , end-start)
+
+```
+
+## Sample Output
+
+
+
+<img width="1702" height="546" alt="image" src="https://github.com/user-attachments/assets/50d12352-d9e4-43a8-ab4d-41d053a47b33" />
+---
+
+<div style="page-break-after: always;"></div>
+
+# Program 7: insertion sort 
+
+## Aim
+
+To write a Python program to sort numbers from insertion sort.
+
+## Program
+
+```python
+import time
+
+start=time.time()
+
+arr = [5, 3, 8, 4, 2]
+
+for i in range(1, len(arr)):
+    key = arr[i]
+    j = i - 1
+
+    while j >= 0 and arr[j] > key:
+        arr[j + 1] = arr[j]
+        j -= 1
+
+    arr[j + 1] = key
+
+print(arr)
+
+
+end=time.time()
+print("execution time" , end-start)
+```
+
+## Sample Output
+
+
+<img width="1683" height="1008" alt="image" src="https://github.com/user-attachments/assets/1fa325a6-9916-4e29-9b67-3d59cb22ca95" />
+
+
+
+<div style="page-break-after: always;"></div>
+
+

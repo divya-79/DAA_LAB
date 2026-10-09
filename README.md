@@ -398,6 +398,8 @@ print("execution time" , end-start)
 
 
 <img width="1683" height="1008" alt="image" src="https://github.com/user-attachments/assets/1fa325a6-9916-4e29-9b67-3d59cb22ca95" />
+<div style="page-break-after: always;"></div>
+
 # Program 9: Number is positive,negative or zero.
 
 ## Aim
@@ -418,8 +420,9 @@ else:
 ```
 
 ## Sample Output
-Enter a number: 5
-Positive
+<img width="632" height="214" alt="image" src="https://github.com/user-attachments/assets/a35fbb4f-e7df-4eda-bb22-a8eff79a0111" />
+
+
 <img width="766" height="545" alt="image" src="https://github.com/user-attachments/assets/4f21acea-455b-4c58-89c7-0b05823f5592" />
 
 

@@ -400,7 +400,7 @@ print("execution time" , end-start)
 <img width="1683" height="1008" alt="image" src="https://github.com/user-attachments/assets/1fa325a6-9916-4e29-9b67-3d59cb22ca95" />
 <div style="page-break-after: always;"></div>
 
-# Program 9: Number is positive,negative or zero.
+# Program 9: Number is positive,negative or zero
 
 ## Aim
 

@@ -136,6 +136,12 @@ Lakshmangarh, Rajasthan
     <td>DFS</td>
     <td><a href="#program-17-DFS">Program 17</a></td>
   </tr>
+  <tr>
+    <td>18</td>
+    <td>Dijkstra's Algorithm</td>
+    <td><a href="#program-17-Dijkstra's-Algorithm">Program 18</a></td>
+  </tr>
+  
 </table>
 
 
@@ -982,6 +988,100 @@ graph.DFS(A)
 <div style="page-break-after: always;"></div>
 
 [Back to Index](#index)
+
+# Program 18: Dijkstra's Algorithm
+
+## Aim
+To write a Python program to implement Dijkstra's Algorithm.
+
+
+## Program
+
+```python
+
+import heapq
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.neighbors = []
+
+
+class Graph:
+    def __init__(self):
+        self.nodes = []
+
+    def add_node(self, data):
+        node = Node(data)
+        self.nodes.append(node)
+        return node
+
+    def add_edge(self, node1, node2, weight):
+        node1.neighbors.append((node2, weight))
+        node2.neighbors.append((node1, weight))
+
+    def Dijkstra(self, start):
+        dist = {node: float('inf') for node in self.nodes}
+        dist[start] = 0
+
+        pq = [(0, start.data, start)]
+
+        while pq:
+            d, _, node = heapq.heappop(pq)
+
+            if d > dist[node]:
+                continue
+
+            for neighbor, weight in node.neighbors:
+                new_dist = d + weight
+
+                if new_dist < dist[neighbor]:
+                    dist[neighbor] = new_dist
+                    heapq.heappush(
+                        pq, (new_dist, neighbor.data, neighbor)
+                    )
+
+        for node in self.nodes:
+            print(start.data, "to", node.data, "=", dist[node])
+
+
+# Create graph
+graph = Graph()
+
+A = graph.add_node("A")
+B = graph.add_node("B")
+C = graph.add_node("C")
+D = graph.add_node("D")
+E = graph.add_node("E")
+
+# Add weighted edges
+graph.add_edge(A, B, 4)
+graph.add_edge(A, C, 1)
+graph.add_edge(B, D, 2)
+graph.add_edge(C, D, 5)
+graph.add_edge(D, E, 3)
+
+# Dijkstra
+print("Dijkstra Shortest Paths:")
+graph.Dijkstra(A)
+
+
+```
+
+## Sample Output
+
+<img width="235" height="101" alt="image" src="https://github.com/user-attachments/assets/bbc90cdd-f69b-4368-a008-810316dc4e7c" />
+
+
+
+
+
+---
+
+<div style="page-break-after: always;"></div>
+
+[Back to Index](#index)
+
 
 
 

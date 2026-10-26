@@ -129,7 +129,12 @@ Lakshmangarh, Rajasthan
   <tr>
     <td>16</td>
     <td>BFS</td>
-    <td><a href="#program-15-BFS">Program 16</a></td>
+    <td><a href="#program-16-BFS">Program 16</a></td>
+  </tr>
+  <tr>
+    <td>17</td>
+    <td>DFS</td>
+    <td><a href="#program-17-DFS">Program 17</a></td>
   </tr>
 </table>
 
@@ -891,6 +896,84 @@ graph.BFS(A)
 ## Sample Output
 
 <img width="175" height="37" alt="image" src="https://github.com/user-attachments/assets/6dd4842d-8630-4b2f-9d80-64d174b1a199" />
+
+
+
+---
+
+<div style="page-break-after: always;"></div>
+
+[Back to Index](#index)
+
+# Program 17: DFS 
+
+## Aim
+To write a Python program to implement DFS.
+
+
+## Program
+
+```python
+
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.neighbors = []
+
+
+class Graph:
+    def __init__(self):
+        self.nodes = []
+
+    def add_node(self, data):
+        node = Node(data)
+        self.nodes.append(node)
+        return node
+
+    def add_edge(self, node1, node2):
+        node1.neighbors.append(node2)
+        node2.neighbors.append(node1)
+
+    def DFS(self, start, visited=None):
+        if visited is None:
+            visited = set()
+
+        visited.add(start)
+        print(start.data, end=" ")
+
+        for neighbor in start.neighbors:
+            if neighbor not in visited:
+                self.DFS(neighbor, visited)
+
+
+# Create graph
+graph = Graph()
+
+A = graph.add_node("A")
+B = graph.add_node("B")
+C = graph.add_node("C")
+D = graph.add_node("D")
+E = graph.add_node("E")
+
+# Add edges
+graph.add_edge(A, B)
+graph.add_edge(A, C)
+graph.add_edge(B, D)
+graph.add_edge(C, D)
+graph.add_edge(D, E)
+
+# DFS traversal
+print("DFS Traversal:")
+graph.DFS(A)
+
+
+```
+
+## Sample Output
+
+<img width="138" height="38" alt="image" src="https://github.com/user-attachments/assets/e1683683-f23b-4260-8b74-d97abf2f42a8" />
+
 
 
 

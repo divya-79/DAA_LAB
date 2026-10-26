@@ -136,10 +136,16 @@ Lakshmangarh, Rajasthan
     <td>DFS</td>
     <td><a href="#program-17-DFS">Program 17</a></td>
   </tr>
+  
   <tr>
     <td>18</td>
     <td>Dijkstra's Algorithm</td>
     <td><a href="#program-17-Dijkstra's-Algorithm">Program 18</a></td>
+  </tr>
+  <tr>
+    <td>19</td>
+    <td>Bellman-Ford Algorithm</td>
+    <td><a href="#program-17-Bellman-Ford-Algorithm">Program 19</a></td>
   </tr>
   
 </table>
@@ -1081,6 +1087,103 @@ graph.Dijkstra(A)
 <div style="page-break-after: always;"></div>
 
 [Back to Index](#index)
+
+# Program 18: Bellman-Ford Algorithm
+
+## Aim
+To write a Python program to implement Bellman-Ford Algorithm.
+
+
+## Program
+
+```python
+
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+
+
+class Graph:
+    def __init__(self):
+        self.nodes = []
+        self.edges = []
+
+    def add_node(self, data):
+        node = Node(data)
+        self.nodes.append(node)
+        return node
+
+    def add_edge(self, node1, node2, weight):
+        self.edges.append((node1, node2, weight))
+
+    def BellmanFord(self, start):
+        dist = {node: float('inf') for node in self.nodes}
+        dist[start] = 0
+
+        # Relax edges V-1 times
+        for _ in range(len(self.nodes) - 1):
+            updated = False
+
+            for u, v, weight in self.edges:
+                if dist[u] != float('inf'):
+                    if dist[u] + weight < dist[v]:
+                        dist[v] = dist[u] + weight
+                        updated = True
+
+            if not updated:
+                break
+
+        # Check negative-weight cycle
+        for u, v, weight in self.edges:
+            if dist[u] != float('inf'):
+                if dist[u] + weight < dist[v]:
+                    print("Negative weight cycle detected!")
+                    return
+
+        for node in self.nodes:
+            print(start.data, "to", node.data, "=", dist[node])
+
+
+# Create graph
+graph = Graph()
+
+A = graph.add_node("A")
+B = graph.add_node("B")
+C = graph.add_node("C")
+D = graph.add_node("D")
+E = graph.add_node("E")
+
+# Add weighted directed edges
+graph.add_edge(A, B, 4)
+graph.add_edge(A, C, 5)
+graph.add_edge(B, C, -2)
+graph.add_edge(B, D, 4)
+graph.add_edge(C, D, 3)
+graph.add_edge(D, E, 2)
+
+# Bellman-Ford
+print("Bellman-Ford Shortest Paths:")
+graph.BellmanFord(A)
+
+
+```
+
+## Sample Output
+
+<img width="260" height="100" alt="image" src="https://github.com/user-attachments/assets/bccc3f7b-1f8d-4c68-bab9-28facffa508f" />
+
+
+
+
+
+
+---
+
+<div style="page-break-after: always;"></div>
+
+[Back to Index](#index)
+
 
 
 

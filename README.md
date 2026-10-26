@@ -140,12 +140,12 @@ Lakshmangarh, Rajasthan
   <tr>
     <td>18</td>
     <td>Dijkstra's Algorithm</td>
-    <td><a href="#program-17-Dijkstra's-Algorithm">Program 18</a></td>
+    <td><a href="#program-18-Dijkstra's-Algorithm">Program 18</a></td>
   </tr>
   <tr>
     <td>19</td>
     <td>Bellman-Ford Algorithm</td>
-    <td><a href="#program-17-Bellman-Ford-Algorithm">Program 19</a></td>
+    <td><a href="#program-19-Bellman-Ford-Algorithm">Program 19</a></td>
   </tr>
   
 </table>

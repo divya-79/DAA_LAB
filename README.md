@@ -126,6 +126,11 @@ Lakshmangarh, Rajasthan
     <td>Directed Weighted Graph</td>
     <td><a href="#program-15-Directed-Weighted-Graph">Program 14</a></td>
   </tr>
+  <tr>
+    <td>16</td>
+    <td>BFS</td>
+    <td><a href="#program-15-BFS">Program 14</a></td>
+  </tr>
 </table>
 
 
@@ -813,6 +818,88 @@ graph.print_graph()
 <div style="page-break-after: always;"></div>
 
 [Back to Index](#index)
+
+# Program 16: BFS 
+
+## Aim
+To write a Python program to implement BFS.
+
+
+## Program
+
+```python
+
+from collections import deque
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.neighbors = []
+
+
+class Graph:
+    def __init__(self):
+        self.nodes = []
+
+    def add_node(self, data):
+        node = Node(data)
+        self.nodes.append(node)
+        return node
+
+    def add_edge(self, node1, node2):
+        node1.neighbors.append(node2)
+        node2.neighbors.append(node1)
+
+    def BFS(self, start):
+        visited = set()
+        queue = deque([start])
+        visited.add(start)
+
+        while queue:
+            node = queue.popleft()
+            print(node.data, end=" ")
+
+            for neighbor in node.neighbors:
+                if neighbor not in visited:
+                    visited.add(neighbor)
+                    queue.append(neighbor)
+
+
+# Create graph
+graph = Graph()
+
+A = graph.add_node("A")
+B = graph.add_node("B")
+C = graph.add_node("C")
+D = graph.add_node("D")
+E = graph.add_node("E")
+
+# Add edges
+graph.add_edge(A, B)
+graph.add_edge(A, C)
+graph.add_edge(B, D)
+graph.add_edge(C, D)
+graph.add_edge(D, E)
+
+# BFS traversal
+print("BFS Traversal:")
+graph.BFS(A)
+
+
+```
+
+## Sample Output
+
+<img width="175" height="37" alt="image" src="https://github.com/user-attachments/assets/6dd4842d-8630-4b2f-9d80-64d174b1a199" />
+
+
+
+---
+
+<div style="page-break-after: always;"></div>
+
+[Back to Index](#index)
+
 
 
 

@@ -106,6 +106,21 @@ Lakshmangarh, Rajasthan
     <td>Simple Calculator</td>
     <td><a href="#program-11-Simple-Caculator">Program 11</a></td>
   </tr>
+  <tr>
+    <td>12</td>
+    <td>Undirected Graph</td>
+    <td><a href="#program-12-Undirected-Graph">Program 12</a></td>
+  </tr>
+  <tr>
+    <td>13</td>
+    <td>Directed Graph</td>
+    <td><a href="#program-13-Directed-Graph">Program 13</a></td>
+  </tr>
+  <tr>
+    <td>14</td>
+    <td>Undirected Weighted Graph</td>
+    <td><a href="#program-14-Undirected-weighted-Graph">Program 14</a></td>
+  </tr>
 </table>
 
 
@@ -537,6 +552,192 @@ Sum = 15.0
 ````
 <img width="834" height="612" alt="image" src="https://github.com/user-attachments/assets/4d1e88b9-a10e-4751-bcc1-43db71992bab" />
 
+
+---
+
+<div style="page-break-after: always;"></div>
+
+[Back to Index](#index)
+
+# Program 12: Undirected Graph
+
+## Aim
+To write a Python program to implement Undirected Graph.
+
+
+## Program
+
+```python
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.neighbors = []
+
+
+class Graph:
+    def __init__(self):
+        self.nodes = []
+
+    def add_node(self, data):
+        node = Node(data)
+        self.nodes.append(node)
+        return node
+
+    def add_edge(self, node1, node2):
+        node1.neighbors.append(node2)
+        node2.neighbors.append(node1)
+
+    def print_graph(self):
+        for node in self.nodes:
+            print(node.data, "->", end=" ")
+            for neighbor in node.neighbors:
+                print(neighbor.data, end=" ")
+            print()
+
+
+graph = Graph()
+
+A = graph.add_node("A")
+B = graph.add_node("B")
+C = graph.add_node("C")
+D = graph.add_node("D")
+
+graph.add_edge(A, B)
+graph.add_edge(A, C)
+graph.add_edge(B, D)
+graph.add_edge(C, D)
+
+graph.print_graph()
+
+```
+
+## Sample Output
+
+<img width="162" height="111" alt="image" src="https://github.com/user-attachments/assets/aa34702e-5c2b-404b-97e9-f8b582260897" />
+
+
+
+---
+
+<div style="page-break-after: always;"></div>
+
+[Back to Index](#index)
+
+# Program 13: Directed Graph
+
+## Aim
+To write a Python program to implement Directed Graph.
+
+
+## Program
+
+```python
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.neighbors = []
+
+
+class Graph:
+    def __init__(self):
+        self.nodes = []
+
+    def add_node(self, data):
+        node = Node(data)
+        self.nodes.append(node)
+        return node
+
+    def add_edge(self, node1, node2):
+        node1.neighbors.append(node2)
+
+    def print_graph(self):
+        for node in self.nodes:
+            print(node.data, "->", end=" ")
+            for neighbor in node.neighbors:
+                print(neighbor.data, end=" ")
+            print()
+
+
+graph = Graph()
+
+A = graph.add_node("A")
+B = graph.add_node("B")
+C = graph.add_node("C")
+D = graph.add_node("D")
+
+graph.add_edge(A, B)
+graph.add_edge(A, C)
+graph.add_edge(B, D)
+graph.add_edge(C, D)
+
+graph.print_graph()
+
+```
+
+## Sample Output
+
+<img width="145" height="107" alt="image" src="https://github.com/user-attachments/assets/8955e538-00cf-4141-a5ba-a68d962a6249" />
+
+---
+
+<div style="page-break-after: always;"></div>
+
+[Back to Index](#index)
+
+# Program 14: Undirected Weighted Graph
+
+## Aim
+To write a Python program to implement Undirected Weighted Graph.
+
+
+## Program
+
+```python
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.neighbors = []
+
+
+class Graph:
+    def __init__(self):
+        self.nodes = []
+
+    def add_node(self, data):
+        node = Node(data)
+        self.nodes.append(node)
+        return node
+
+    def add_edge(self, node1, node2, weight):
+        node1.neighbors.append((node2, weight))
+
+    def print_graph(self):
+        for node in self.nodes:
+            print(node.data, "->", end=" ")
+            for neighbor, weight in node.neighbors:
+                print(neighbor.data, "(", weight, ")", end=" ")
+            print()
+
+
+graph = Graph()
+
+A = graph.add_node("A")
+B = graph.add_node("B")
+C = graph.add_node("C")
+D = graph.add_node("D")
+
+graph.add_edge(A, B, 5)
+graph.add_edge(A, C, 3)
+graph.add_edge(B, D, 7)
+graph.add_edge(C, D, 2)
+
+graph.print_graph()
+
+```
+
+## Sample Output
+
+<img width="321" height="102" alt="image" src="https://github.com/user-attachments/assets/084f900d-dc96-43ba-a56f-c05b15043644" />
 
 ---
 

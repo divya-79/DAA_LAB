@@ -40,116 +40,48 @@ Lakshmangarh, Rajasthan
 
 # INDEX
 
-<table style="width:100%; border-collapse:collapse;">
-  <tr>
-    <th style="width:10%;">S. No.</th>
-    <th style="width:65%;">Program</th>
-    <th style="width:25%;">Link</th>
-  </tr>
+# INDEX
 
-  <tr>
-    <td>1</td>
-    <td>Addition of Two Numbers</td>
-    <td><a href="#program-1-addition-of-two-numbers">Program 1</a></td>
-  </tr>
+<table>
+<tr>
+<th>S. No.</th>
+<th>Program Name</th>
+<th>Link</th>
+</tr>
 
-  <tr>
-    <td>2</td>
-    <td>Largest of Three Numbers</td>
-    <td><a href="#program-2-largest-of-three-numbers">Program 2</a></td>
-  </tr>
+<tr><td>1</td><td>Addition of Two Numbers</td><td><a href="#program-1-addition-of-two-numbers">Program 1</a></td></tr>
+<tr><td>2</td><td>Largest of Three Numbers</td><td><a href="#program-2-largest-of-three-numbers">Program 2</a></td></tr>
+<tr><td>3</td><td>Factorial of a Number</td><td><a href="#program-3-factorial-of-a-number">Program 3</a></td></tr>
+<tr><td>4</td><td>Prime Number Check</td><td><a href="#program-4-prime-number-check">Program 4</a></td></tr>
+<tr><td>5</td><td>Fibonacci Series</td><td><a href="#program-5-fibonacci-series">Program 5</a></td></tr>
+<tr><td>6</td><td>Bubble Sort</td><td><a href="#program-6-bubble-sort">Program 6</a></td></tr>
+<tr><td>7</td><td>Selection Sort</td><td><a href="#program-7-selection-sort">Program 7</a></td></tr>
+<tr><td>8</td><td>Insertion Sort</td><td><a href="#program-8-insertion-sort">Program 8</a></td></tr>
+<tr><td>9</td><td>Merge Sort</td><td><a href="#program-9-merge-sort">Program 9</a></td></tr>
+<tr><td>10</td><td>Quick Sort</td><td><a href="#program-10-quick-sort">Program 10</a></td></tr>
+<tr><td>11</td><td>Sorting Algorithms Comparison</td><td><a href="#program-11-time-and-memory-comparison-of-all-sortings">Program 11</a></td></tr>
+<tr><td>12</td><td>Linear Search</td><td><a href="#program-12-linear-search">Program 12</a></td></tr>
+<tr><td>13</td><td>Binary Search</td><td><a href="#program-13-binary-search">Program 13</a></td></tr>
+<tr><td>14</td><td>Linear vs Binary Search Comparison</td><td><a href="#program-14-time-and-memory-comparison-of-linear-and-binary-searching">Program 14</a></td></tr>
+<tr><td>15</td><td>Comparison of Time Complexities</td><td><a href="#program-15-time-and-memory-comparison-of-different-time-complexities">Program 15</a></td></tr>
+<tr><td>16</td><td>Positive, Negative or Zero</td><td><a href="#program-16-number-is-positive-negative-or-zero">Program 16</a></td></tr>
+<tr><td>17</td><td>Day of the Week</td><td><a href="#program-17-day-of-the-week">Program 17</a></td></tr>
+<tr><td>18</td><td>Simple Calculator</td><td><a href="#program-18-simple-calculator">Program 18</a></td></tr>
+<tr><td>19</td><td>Undirected Graph</td><td><a href="#program-19-undirected-graph">Program 19</a></td></tr>
+<tr><td>20</td><td>Directed Graph</td><td><a href="#program-20-directed-graph">Program 20</a></td></tr>
+<tr><td>21</td><td>Undirected Weighted Graph</td><td><a href="#program-21-undirected-weighted-graph">Program 21</a></td></tr>
+<tr><td>22</td><td>Directed Weighted Graph</td><td><a href="#program-22-directed-weighted-graph">Program 22</a></td></tr>
+<tr><td>23</td><td>Breadth First Search (BFS)</td><td><a href="#program-23-bfs">Program 23</a></td></tr>
+<tr><td>24</td><td>Depth First Search (DFS)</td><td><a href="#program-24-dfs">Program 24</a></td></tr>
+<tr><td>25</td><td>Dijkstra's Algorithm</td><td><a href="#program-25-dijkstras-algorithm">Program 25</a></td></tr>
+<tr><td>26</td><td>Bellman-Ford Algorithm</td><td><a href="#program-26-bellman-ford-algorithm">Program 26</a></td></tr>
+<tr><td>27</td><td>Prim's Algorithm</td><td><a href="#program-27-prims-algorithm">Program 27</a></td></tr>
+<tr><td>28</td><td>Kruskal's Algorithm</td><td><a href="#program-28-kruskal-algorithm">Program 28</a></td></tr>
+<tr><td>29</td><td>Floyd-Warshall Algorithm</td><td><a href="#program-29-floyd-warshall-algorithm">Program 29</a></td></tr>
+<tr><td>30</td><td>Greedy Knapsack</td><td><a href="#program-30-greedy-knapsack">Program 30</a></td></tr>
+<tr><td>31</td><td>Fractional Knapsack</td><td><a href="#program-31-fractional-knapsack">Program 31</a></td></tr>
 
-  <tr>
-    <td>3</td>
-    <td>Factorial of a Number</td>
-    <td><a href="#program-3-factorial-of-a-number">Program 3</a></td>
-  </tr>
-
-  <tr>
-    <td>4</td>
-    <td>Prime Number Check</td>
-    <td><a href="#program-4-prime-number-check">Program 4</a></td>
-  </tr>
-
-  <tr>
-    <td>5</td>
-    <td>Fibonacci Series</td>
-    <td><a href="#program-5-fibonacci-series">Program 5</a></td>
-  </tr>
-  <tr>
-    <td>6</td>
-    <td>bubble sort</td>
-    <td><a href="#program-6-bubble-sort">Program 6</a></td>
-  </tr>
-  <tr>
-    <td>7</td>
-    <td>selection sort</td>
-    <td><a href="#program-7-selection-sort">Program 7</a></td>
-  </tr>
-  <tr>
-    <td>8</td>
-    <td>insertion sort</td>
-    <td><a href="#program-8-insertion-sort">Program 8</a></td>
-  </tr>
-  <tr>
-    <td>9</td>
-    <td> Number is positive,negative or zero</td>
-    <td><a href="#program-9-Number-is-positive,negative-or-zero">Program 9</a></td>
-  </tr>
-  <tr>
-    <td>10</td>
-    <td>Day of the week</td>
-    <td><a href="#program-10-day-of-the-week">Program 10</a></td>
-  </tr>
-  <tr>
-    <td>11</td>
-    <td>Simple Calculator</td>
-    <td><a href="#program-11-Simple-Caculator">Program 11</a></td>
-  </tr>
-  <tr>
-    <td>12</td>
-    <td>Undirected Graph</td>
-    <td><a href="#program-12-Undirected-Graph">Program 12</a></td>
-  </tr>
-  <tr>
-    <td>13</td>
-    <td>Directed Graph</td>
-    <td><a href="#program-13-Directed-Graph">Program 13</a></td>
-  </tr>
-  <tr>
-    <td>14</td>
-    <td>Undirected Weighted Graph</td>
-    <td><a href="#program-14-Undirected-Weighted-Graph">Program 14</a></td>
-  </tr>
-  <tr>
-    <td>15</td>
-    <td>Directed Weighted Graph</td>
-    <td><a href="#program-15-Directed-Weighted-Graph">Program 15</a></td>
-  </tr>
-  <tr>
-    <td>16</td>
-    <td>BFS</td>
-    <td><a href="#program-16-BFS">Program 16</a></td>
-  </tr>
-  <tr>
-    <td>17</td>
-    <td>DFS</td>
-    <td><a href="#program-17-DFS">Program 17</a></td>
-  </tr>
-  
-  <tr>
-    <td>18</td>
-    <td>Dijkstra's Algorithm</td>
-    <td><a href="#program-18-Dijkstra's-Algorithm">Program 18</a></td>
-  </tr>
-  <tr>
-    <td>19</td>
-    <td>Bellman-Ford Algorithm</td>
-    <td><a href="#program-19-Bellman-Ford-Algorithm">Program 19</a></td>
-  </tr>
-  
 </table>
-
 
 ---
 <div style="page-break-after: always;"></div>

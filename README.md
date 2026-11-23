@@ -38,10 +38,6 @@ Lakshmangarh, Rajasthan
 
 # INDEX
 
-# INDEX
-
-# INDEX
-
 <table>
 <tr>
 <th>S. No.</th>
@@ -1921,7 +1917,7 @@ graph.BellmanFord(A)
 
 #Program Prim's algorithm
 ##Aim Write a Python program to find shortest paths using the Bellman-Ford algorithm and detect negative-weight cycles.
-Program 27
+##Program 
 
 ```python
 
@@ -2049,6 +2045,7 @@ print(f"Peak memory: {peak / 1024:.2f} KB")
 sample output
 <img width="320" height="481" alt="image" src="https://github.com/user-attachments/assets/0c8752bc-4a64-4215-bb74-73bfe89212a4" />
 back to index
+
 <a id="program-28"></a>
 Program Krushal alogorithm
 

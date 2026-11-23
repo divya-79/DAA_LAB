@@ -452,7 +452,809 @@ print("execution time" , end-start)
 <img width="1683" height="1008" alt="image" src="https://github.com/user-attachments/assets/1fa325a6-9916-4e29-9b67-3d59cb22ca95" />
 <div style="page-break-after: always;"></div>
 
-# Program 9: Number is positive,negative or zero
+<a id="program-9-merge-sort"></a>
+Program 9: Merge Sort
+Aim
+Write a Python program to sort an array using Merge Sort and find its execution time and memory used.
+Program
+```python
+import time
+import tracemalloc
+
+def merge_sort(arr):
+
+    if len(arr) <= 1:
+        return arr
+
+    mid = len(arr) // 2
+
+    left = merge_sort(arr[:mid])
+    right = merge_sort(arr[mid:])
+
+    result = []
+
+    i = 0
+    j = 0
+
+    while i < len(left) and j < len(right):
+
+        if left[i] < right[j]:
+            result.append(left[i])
+            i = i + 1
+
+        else:
+            result.append(right[j])
+            j = j + 1
+
+    result.extend(left[i:])
+    result.extend(right[j:])
+
+    return result
+
+
+arr = [50, 30, 10, 40, 20]
+
+tracemalloc.start()
+
+start = time.time()
+
+arr = merge_sort(arr)
+
+end = time.time()
+
+current, peak = tracemalloc.get_traced_memory()
+tracemalloc.stop()
+
+print("Sorted Array:", arr)
+print("Execution Time:", end - start, "seconds")
+print("Memory Used:", current, "bytes")
+print("Peak Memory:", peak, "bytes")
+
+```
+Sample Output
+<img width="340" height="62" alt="image" src="https://github.com/user-attachments/assets/415dafbb-38f3-415a-9898-2ddb100174f5" />
+
+Back to Index
+---
+<a id="program-10-quick-sort"></a>
+Program 10: Quick Sort
+Aim
+Write a Python program to sort an array using Quick Sort and find its execution time and memory used.
+Program
+```python
+import time
+import tracemalloc
+
+def quick_sort(arr):
+
+    if len(arr) <= 1:
+        return arr
+
+    pivot = arr[0]
+
+    left = []
+    right = []
+
+    for i in range(1, len(arr)):
+
+        if arr[i] < pivot:
+            left.append(arr[i])
+        else:
+            right.append(arr[i])
+
+    return quick_sort(left) + [pivot] + quick_sort(right)
+
+
+arr = [50, 30, 10, 40, 20]
+
+tracemalloc.start()
+
+start = time.time()
+
+arr = quick_sort(arr)
+
+end = time.time()
+
+current, peak = tracemalloc.get_traced_memory()
+tracemalloc.stop()
+
+print("Sorted Array:", arr)
+print("Execution Time:", end - start, "seconds")
+print("Memory Used:", current, "bytes")
+print("Peak Memory:", peak, "bytes")
+
+```
+Sample Output
+<img width="299" height="50" alt="image" src="https://github.com/user-attachments/assets/315c8f0d-3984-4b8b-ab23-2f77268a8890" />
+Back to Index
+---
+<a id="program-11-Time-and-Memory-Comparison-of-all-Sortings"></a>
+Program 11: Time and Memory Comparison of all Sortings
+Aim
+Implement Bubble Sort, Selection Sort, Insertion Sort, Merge Sort, and Quick Sort in Python. Calculate the execution time and memory usage of each algorithm and compare their performance using graphs.
+Program
+```python
+import time
+import matplotlib.pyplot as plt
+
+# Original array
+arr = [50, 30, 10, 40, 20, 70, 60, 80, 90, 100]
+
+
+# ---------------- BUBBLE SORT ----------------
+
+def bubble_sort(a):
+
+    a = a.copy()
+
+    n = len(a)
+
+    for i in range(n):
+        for j in range(n - i - 1):
+
+            if a[j] > a[j + 1]:
+
+                temp = a[j]
+                a[j] = a[j + 1]
+                a[j + 1] = temp
+
+    return a
+
+
+# ---------------- SELECTION SORT ----------------
+
+def selection_sort(a):
+
+    a = a.copy()
+
+    n = len(a)
+
+    for i in range(n):
+
+        small = i
+
+        for j in range(i + 1, n):
+
+            if a[j] < a[small]:
+                small = j
+
+        temp = a[i]
+        a[i] = a[small]
+        a[small] = temp
+
+    return a
+
+
+# ---------------- INSERTION SORT ----------------
+
+def insertion_sort(a):
+
+    a = a.copy()
+
+    n = len(a)
+
+    for i in range(1, n):
+
+        key = a[i]
+        j = i - 1
+
+        while j >= 0 and a[j] > key:
+
+            a[j + 1] = a[j]
+            j = j - 1
+
+        a[j + 1] = key
+
+    return a
+
+
+# ---------------- MERGE SORT ----------------
+
+def merge_sort(a):
+
+    if len(a) <= 1:
+        return a
+
+    mid = len(a) // 2
+
+    left = merge_sort(a[:mid])
+    right = merge_sort(a[mid:])
+
+    result = []
+
+    i = 0
+    j = 0
+
+    while i < len(left) and j < len(right):
+
+        if left[i] < right[j]:
+            result.append(left[i])
+            i += 1
+        else:
+            result.append(right[j])
+            j += 1
+
+    result.extend(left[i:])
+    result.extend(right[j:])
+
+    return result
+
+
+# ---------------- QUICK SORT ----------------
+
+def quick_sort(a):
+
+    if len(a) <= 1:
+        return a
+
+    pivot = a[0]
+
+    left = []
+    right = []
+
+    for i in range(1, len(a)):
+
+        if a[i] < pivot:
+            left.append(a[i])
+        else:
+            right.append(a[i])
+
+    return quick_sort(left) + [pivot] + quick_sort(right)
+
+
+# ---------------- FIND EXECUTION TIME ----------------
+
+times = []
+
+start = time.time()
+bubble_sort(arr)
+times.append(time.time() - start)
+
+start = time.time()
+selection_sort(arr)
+times.append(time.time() - start)
+
+start = time.time()
+insertion_sort(arr)
+times.append(time.time() - start)
+
+start = time.time()
+merge_sort(arr)
+times.append(time.time() - start)
+
+start = time.time()
+quick_sort(arr)
+times.append(time.time() - start)
+
+
+# ---------------- PRINT TIME ----------------
+
+print("Bubble Sort Time:", times[0])
+print("Selection Sort Time:", times[1])
+print("Insertion Sort Time:", times[2])
+print("Merge Sort Time:", times[3])
+print("Quick Sort Time:", times[4])
+
+
+# ---------------- GRAPH ----------------
+
+names = [
+    "Bubble Sort",
+    "Selection Sort",
+    "Insertion Sort",
+    "Merge Sort",
+    "Quick Sort"
+]
+
+plt.bar(names, times)
+
+plt.xlabel("Sorting Algorithms")
+plt.ylabel("Execution Time")
+
+plt.title("Comparison of Sorting Algorithms")
+
+plt.xticks(rotation=20)
+
+plt.grid()
+
+plt.show()
+
+```
+Sample Output
+<img width="311" height="53" alt="image" src="https://github.com/user-attachments/assets/f7f8fca7-2761-4e76-9c39-664cae37f09a" />
+<img width="911" height="459" alt="image" src="https://github.com/user-attachments/assets/c0889196-962d-429a-817d-57d0bef9a7b5" />
+Back to Index
+---
+<a id="program-12-linear-search"></a>
+Program 12: Linear Search
+Aim
+Write a Python program to search for a given element in an array using Linear Search. Also calculate its execution time and memory usage.
+Program
+```python
+import time
+import tracemalloc
+
+arr = [10, 20, 30, 40, 50]
+value = 30
+
+tracemalloc.start()
+
+start = time.time()
+
+found = False
+
+for i in range(len(arr)):
+    if arr[i] == value:
+        print("Element found at position:", i)
+        found = True
+        break
+
+if found == False:
+    print("Element not found")
+
+end = time.time()
+
+current, peak = tracemalloc.get_traced_memory()
+tracemalloc.stop()
+
+print("Execution Time:", end - start, "seconds")
+print("Memory Used:", current, "bytes")
+print("Peak Memory:", peak, "bytes")
+
+```
+Sample Output
+<img width="293" height="56" alt="image" src="https://github.com/user-attachments/assets/97729835-b4cd-4c75-8e4e-129e0f99c13e" />
+Back to Index
+---
+<a id="program-13-binary-search"></a>
+Program 13: Binary Search
+Aim
+Write a Python program to search for a given element in a sorted array using Binary Search. Also calculate its execution time and memory usage.
+Program
+```python
+import time
+import tracemalloc
+
+arr = [10, 20, 30, 40, 50]
+value = 40
+
+tracemalloc.start()
+
+start = time.time()
+
+low = 0
+high = len(arr) - 1
+found = False
+
+while low <= high:
+
+    mid = (low + high) // 2
+
+    if arr[mid] == value:
+        print("Element found at position:", mid)
+        found = True
+        break
+
+    elif arr[mid] < value:
+        low = mid + 1
+
+    else:
+        high = mid - 1
+
+if found == False:
+    print("Element not found")
+
+end = time.time()
+
+current, peak = tracemalloc.get_traced_memory()
+tracemalloc.stop()
+
+print("Execution Time:", end - start, "seconds")
+print("Memory Used:", current, "bytes")
+print("Peak Memory:", peak, "bytes")
+
+```
+Sample Output
+<img width="289" height="62" alt="image" src="https://github.com/user-attachments/assets/b1d80fb8-9198-4293-9c64-0b81cebb656a" />
+Back to Index
+---
+<a id="program-14-Time-and-Memory-Comparison-of-linear-and-binary-searching"></a>
+Program 14: Time and Memory Comparison of linear and binary searching
+Aim
+Write a Python program to compare the execution time of Linear Search and Binary Search and represent the comparison using a graph.
+Program
+```python
+import time
+import matplotlib.pyplot as plt
+
+# Different input sizes
+sizes = [1000, 5000, 10000, 20000, 50000]
+
+linear_times = []
+binary_times = []
+
+for n in sizes:
+
+    arr = list(range(n))
+    value = n - 1
+
+    # ---------------- Linear Search ----------------
+
+    start = time.perf_counter()
+
+    for i in range(len(arr)):
+        if arr[i] == value:
+            break
+
+    end = time.perf_counter()
+
+    linear_times.append(end - start)
+
+
+    # ---------------- Binary Search ----------------
+
+    start = time.perf_counter()
+
+    low = 0
+    high = len(arr) - 1
+
+    while low <= high:
+
+        mid = (low + high) // 2
+
+        if arr[mid] == value:
+            break
+
+        elif arr[mid] < value:
+            low = mid + 1
+
+        else:
+            high = mid - 1
+
+    end = time.perf_counter()
+
+    binary_times.append(end - start)
+
+
+# Print results
+print("Input Size        Linear Search                      Binary Search")
+
+for i in range(len(sizes)):
+    print(
+        sizes[i],
+        "        ",
+        linear_times[i],
+        "        ",
+        binary_times[i]
+    )
+
+
+# ---------------- GRAPH ----------------
+
+plt.plot(
+    sizes,
+    linear_times,
+    marker='o',
+    label="Linear Search"
+)
+
+plt.plot(
+    sizes,
+    binary_times,
+    marker='o',
+    label="Binary Search"
+)
+
+plt.xlabel("Input Size (n)")
+plt.ylabel("Execution Time (seconds)")
+
+plt.title("Linear Search vs Binary Search")
+
+plt.legend()
+plt.grid()
+
+plt.show()
+
+```
+Sample Output
+<img width="408" height="87" alt="image" src="https://github.com/user-attachments/assets/46db1611-d130-415e-beac-b101988b351c" />
+<img width="479" height="355" alt="image" src="https://github.com/user-attachments/assets/0a74dcb3-82bd-426f-9118-4007ab780cf5" />
+
+Back to Index
+---
+<a id="program-15-Time-and-Memory-Comparison-of-different-time-complexities"></a>
+Program 15: Time and Memory Comparison of different time complexities
+Aim
+Write a Python program to demonstrate different time complexities and calculate execution time and memory usage.
+Program
+```python
+# ============================================================
+
+# ------------------------------------------------------------
+# 1. O(1) - Constant Time
+# ------------------------------------------------------------
+print("\n========== O(1) - CONSTANT TIME ==========")
+
+a = [10, 20, 30]
+print("Array:", a)
+print("First element:", a[0])
+
+
+# ------------------------------------------------------------
+# 2. O(log n) - Logarithmic Time
+# ------------------------------------------------------------
+print("\n========== O(log n) - LOGARITHMIC TIME ==========")
+
+n = 16
+original_n = n
+
+while n > 1:
+    n = n // 2
+
+print("Original n:", original_n)
+print("Value after repeated division:", n)
+
+
+# ------------------------------------------------------------
+# 3. O(sqrt(n)) - Square Root Time
+# ------------------------------------------------------------
+print("\n========== O(sqrt(n)) - SQUARE ROOT TIME ==========")
+
+n = 10
+i = 1
+
+while i * i <= n:
+    i += 1
+
+print("n =", n)
+print("Number of iterations:", i - 1)
+
+
+# ------------------------------------------------------------
+# 4. O(n) - Linear Time
+# ------------------------------------------------------------
+print("\n========== O(n) - LINEAR TIME ==========")
+
+n = 5
+
+for i in range(n):
+    print("i =", i)
+
+
+# ------------------------------------------------------------
+# 5. O(n log n) - Linearithmic Time
+# ------------------------------------------------------------
+print("\n========== O(n log n) - LINEARITHMIC TIME ==========")
+
+n = 4
+
+for i in range(n):
+    j = i
+
+    while j > 1:
+        j = j // 2
+
+    print("i =", i, "final j =", j)
+
+
+# ------------------------------------------------------------
+# 6. O(n^2) - Quadratic Time
+# ------------------------------------------------------------
+print("\n========== O(n^2) - QUADRATIC TIME ==========")
+
+n = 2
+
+for i in range(n):
+    for j in range(n):
+        print("(", i, ",", j, ")")
+
+
+# ------------------------------------------------------------
+# 7. O(n^3) - Cubic Time
+# ------------------------------------------------------------
+print("\n========== O(n^3) - CUBIC TIME ==========")
+
+n = 2
+
+for i in range(n):
+    for j in range(n):
+        for k in range(n):
+            print("(", i, ",", j, ",", k, ")")
+
+
+# ------------------------------------------------------------
+# 8. O(2^n) - Exponential Time
+# ------------------------------------------------------------
+print("\n========== O(2^n) - EXPONENTIAL TIME ==========")
+
+def fun_exponential(n):
+
+    if n == 0:
+        return
+
+    print(n)
+
+    fun_exponential(n - 1)
+    fun_exponential(n - 1)
+
+
+print("Output for n = 3:")
+fun_exponential(3)
+
+
+# ------------------------------------------------------------
+# 9. O(n!) - Factorial Time
+# ------------------------------------------------------------
+print("\n========== O(n!) - FACTORIAL TIME ==========")
+
+from itertools import permutations
+
+n = 2
+
+for p in permutations(range(n)):
+    print(p)
+
+
+# ------------------------------------------------------------
+# 10. EXECUTION TIME
+# ------------------------------------------------------------
+print("\n========== EXECUTION TIME ==========")
+
+import time
+
+start = time.time()
+
+# Program
+for i in range(1000000):
+    pass
+
+end = time.time()
+
+print("Execution Time:", end - start, "seconds")
+
+
+# ------------------------------------------------------------
+# 11. MEMORY USED
+# ------------------------------------------------------------
+print("\n========== MEMORY USED ==========")
+
+import tracemalloc
+
+tracemalloc.start()
+
+# Program
+a = [i for i in range(100000)]
+
+current, peak = tracemalloc.get_traced_memory()
+
+print("Current Memory:", current, "bytes")
+print("Peak Memory:", peak, "bytes")
+
+tracemalloc.stop()
+
+
+# ------------------------------------------------------------
+# END
+# ------------------------------------------------------------
+print("\n==============================================")
+print("       ALL COMPLEXITIES EXECUTED SUCCESSFULLY")
+print("==============================================")
+# ------------------------------------------------------------
+# 12. GRAPH PLOT - COMPARISON OF TIME COMPLEXITIES
+# ------------------------------------------------------------
+
+import matplotlib.pyplot as plt
+
+# Values of n
+n_values = range(1, 11)
+
+# Different time complexities
+O_1 = [1 for n in n_values]
+O_log_n = [__import__('math').log2(n) for n in n_values]
+O_sqrt_n = [n ** 0.5 for n in n_values]
+O_n = [n for n in n_values]
+O_n_log_n = [n * __import__('math').log2(n) for n in n_values]
+O_n2 = [n ** 2 for n in n_values]
+O_n3 = [n ** 3 for n in n_values]
+O_2n = [2 ** n for n in n_values]
+
+# Plot
+plt.figure(figsize=(10, 6))
+
+plt.plot(n_values, O_1, marker='o', label='O(1)')
+plt.plot(n_values, O_log_n, marker='o', label='O(log n)')
+plt.plot(n_values, O_sqrt_n, marker='o', label='O(sqrt(n))')
+plt.plot(n_values, O_n, marker='o', label='O(n)')
+plt.plot(n_values, O_n_log_n, marker='o', label='O(n log n)')
+plt.plot(n_values, O_n2, marker='o', label='O(n^2)')
+plt.plot(n_values, O_n3, marker='o', label='O(n^3)')
+plt.plot(n_values, O_2n, marker='o', label='O(2^n)')
+
+plt.xlabel("Input Size (n)")
+plt.ylabel("Number of Operations / Growth")
+plt.title("Comparison of Time Complexities")
+
+plt.legend()
+plt.grid(True)
+
+plt.show()
+
+```
+Sample Output
+```text
+========== O(1) - CONSTANT TIME ==========
+Array: [10, 20, 30]
+First element: 10
+
+========== O(log n) - LOGARITHMIC TIME ==========
+Original n: 16
+Value after repeated division: 1
+
+========== O(sqrt(n)) - SQUARE ROOT TIME ==========
+n = 10
+Number of iterations: 3
+
+========== O(n) - LINEAR TIME ==========
+i = 0
+i = 1
+i = 2
+i = 3
+i = 4
+
+========== O(n log n) - LINEARITHMIC TIME ==========
+i = 0 final j = 0
+i = 1 final j = 1
+i = 2 final j = 1
+i = 3 final j = 1
+
+========== O(n^2) - QUADRATIC TIME ==========
+( 0 , 0 )
+( 0 , 1 )
+( 1 , 0 )
+( 1 , 1 )
+
+========== O(n^3) - CUBIC TIME ==========
+( 0 , 0 , 0 )
+( 0 , 0 , 1 )
+( 0 , 1 , 0 )
+( 0 , 1 , 1 )
+( 1 , 0 , 0 )
+( 1 , 0 , 1 )
+( 1 , 1 , 0 )
+( 1 , 1 , 1 )
+
+========== O(2^n) - EXPONENTIAL TIME ==========
+Output for n = 3:
+3
+2
+1
+1
+2
+1
+1
+
+========== O(n!) - FACTORIAL TIME ==========
+(0, 1)
+(1, 0)
+
+========== EXECUTION TIME ==========
+Execution Time: 0.09830784797668457 seconds
+
+========== MEMORY USED ==========
+Current Memory: 3993016 bytes
+Peak Memory: 3993048 bytes
+
+==============================================
+       ALL COMPLEXITIES EXECUTED SUCCESSFULLY
+==============================================
+
+```
+<img width="926" height="449" alt="image" src="https://github.com/user-attachments/assets/cccdedfc-0dc8-4ef6-8d7d-6dadf1b48c63" />
+
+Back to Index
+---
+
+# Program 16: Number is positive,negative or zero
 
 ## Aim
 
@@ -486,7 +1288,7 @@ Factorial = 120
 
 <div style="page-break-after: always;"></div>
 
-# Program 10: day of the week
+# Program 17: day of the week
 
 ## Aim
 Write a program to input a number from 1 to 7 and display the corresponding day of the week.
@@ -530,7 +1332,7 @@ Wednesday
 [Back to Index](#index)
 
 
-# Program 11: Simple Calculator
+# Program 18: Simple Calculator
 
 ## Aim
 To write a Python program to perform basic arithmetic operations such as addition, subtraction, multiplication, and division using conditional statements.
@@ -586,7 +1388,7 @@ Sum = 15.0
 
 [Back to Index](#index)
 
-# Program 12: Undirected Graph
+# Program 19: Undirected Graph
 
 ## Aim
 To write a Python program to implement Undirected Graph.
@@ -650,7 +1452,7 @@ graph.print_graph()
 
 [Back to Index](#index)
 
-# Program 13: Directed Graph
+# Program 20: Directed Graph
 
 ## Aim
 To write a Python program to implement Directed Graph.
@@ -711,7 +1513,7 @@ graph.print_graph()
 
 [Back to Index](#index)
 
-# Program 14: Undirected Weighted Graph
+# Program 21: Undirected Weighted Graph
 
 ## Aim
 To write a Python program to implement Undirected Weighted Graph.

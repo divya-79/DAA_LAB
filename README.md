@@ -1506,7 +1506,7 @@ graph.print_graph()
 
 [Back to Index](#index)
 
-# Program 15: Directed Weighted Graph
+# Program 22: Directed Weighted Graph
 
 ## Aim
 To write a Python program to implement Directed Weighted Graph.
@@ -1570,7 +1570,7 @@ graph.print_graph()
 
 [Back to Index](#index)
 
-# Program 16: BFS 
+# Program 23: BFS 
 
 ## Aim
 To write a Python program to implement BFS.
@@ -1651,7 +1651,7 @@ graph.BFS(A)
 
 [Back to Index](#index)
 
-# Program 17: DFS 
+# Program 24: DFS 
 
 ## Aim
 To write a Python program to implement DFS.
@@ -1729,7 +1729,7 @@ graph.DFS(A)
 
 [Back to Index](#index)
 
-# Program 18: Dijkstra's Algorithm
+# Program 25: Dijkstra's Algorithm
 
 ## Aim
 To write a Python program to implement Dijkstra's Algorithm.
@@ -1822,7 +1822,7 @@ graph.Dijkstra(A)
 
 [Back to Index](#index)
 
-# Program 18: Bellman-Ford Algorithm
+# Program 26: Bellman-Ford Algorithm
 
 ## Aim
 To write a Python program to implement Bellman-Ford Algorithm.
@@ -1920,7 +1920,7 @@ graph.BellmanFord(A)
 
 #Program Prim's algorithm
 ##Aim Write a Python program to find shortest paths using the Bellman-Ford algorithm and detect negative-weight cycles.
-Program 24
+Program 27
 
 ```python
 
@@ -2048,11 +2048,11 @@ print(f"Peak memory: {peak / 1024:.2f} KB")
 sample output
 <img width="320" height="481" alt="image" src="https://github.com/user-attachments/assets/0c8752bc-4a64-4215-bb74-73bfe89212a4" />
 back to index
-<a id="program-25"></a>
+<a id="program-28"></a>
 Program Krushal alogorithm
 
 Aim Write a Python program to find the Minimum Spanning Tree (MST) and its total weight using Kruskal’s algorithm.
-Program 25
+Program 28
 ```python
 
 import time
@@ -2187,8 +2187,8 @@ print(f"Peak memory: {peak / 1024:.2f} KB")
 sample output
 <img width="482" height="492" alt="image" src="https://github.com/user-attachments/assets/ba8a8c17-ee2d-4ab4-8d7f-b29c72913a89" />
 back to index
-<a id="program-26"></a>
-Program 26
+<a id="program-29"></a>
+Program 29
 ```python
 
 INF = float('inf')
@@ -2223,8 +2223,8 @@ Sample output
 <img width="856" height="142" alt="image" src="https://github.com/user-attachments/assets/d8325371-aa96-44f9-a44d-3f8fe5ab3f7a" />
 
 back to index
-<a id="program-27"></a>
-Program 27
+<a id="program-30"></a>
+Program 30
 ```python
 
 def greedy_knapsack():
@@ -2285,8 +2285,8 @@ Sample Output
 <img width="678" height="415" alt="image" src="https://github.com/user-attachments/assets/79ffabcc-3ccd-418b-acba-6a11e293a9c5" />
 
 back to index
-<a id="program-28"></a>
-Program 28
+<a id="program-31"></a>
+Program 31
 ```python
 
 def fractional_knapsack():

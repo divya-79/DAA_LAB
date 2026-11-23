@@ -1986,6 +1986,456 @@ graph.BellmanFord(A)
 
 [Back to Index](#index)
 
+#Program Prim's algorithm
+##Aim Write a Python program to find shortest paths using the Bellman-Ford algorithm and detect negative-weight cycles.
+Program 24
+
+```python
+
+import time
+import tracemalloc
+
+tracemalloc.start()
+
+# Start timer
+start_time = time.perf_counter()
+
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.neighbors = []
+
+
+class Graph:
+    def __init__(self):
+        self.nodes = []
+
+    def add_node(self, data):
+        node = Node(data)
+        self.nodes.append(node)
+        return node
+
+    # Undirected weighted edge
+    def add_edge(self, node1, node2, weight):
+        node1.neighbors.append((node2, weight))
+        node2.neighbors.append((node1, weight))
+
+    def print_graph(self):
+        for node in self.nodes:
+            print(node.data, ":", end=" ")
+
+            for i, (neighbor, weight) in enumerate(node.neighbors):
+                print(f"{neighbor.data}({weight})", end="")
+
+                if i < len(node.neighbors) - 1:
+                    print(", ", end="")
+
+            print()
+
+    def prim(self, source):
+        visited = set()
+        mst = []
+        total_weight = 0
+
+        # Start from source node
+        visited.add(source)
+
+        # Repeat until all nodes are visited
+        while len(visited) < len(self.nodes):
+            min_edge = None
+            min_weight = float('inf')
+
+            # Find minimum-weight edge connecting
+            # a visited node to an unvisited node
+            for node in visited:
+                for neighbor, weight in node.neighbors:
+                    if neighbor not in visited and weight < min_weight:
+                        min_weight = weight
+                        min_edge = (node, neighbor, weight)
+
+            # Graph is disconnected
+            if min_edge is None:
+                print("Graph is disconnected; MST not possible.")
+                return None
+
+            u, v, weight = min_edge
+
+            visited.add(v)
+            mst.append((u, v, weight))
+            total_weight += weight
+
+        return mst, total_weight
+
+
+# Create graph
+graph = Graph()
+
+A = graph.add_node("A")
+B = graph.add_node("B")
+C = graph.add_node("C")
+D = graph.add_node("D")
+E = graph.add_node("E")
+
+# Add undirected weighted edges
+graph.add_edge(A, B, 4)
+graph.add_edge(A, C, 2)
+graph.add_edge(B, D, 5)
+graph.add_edge(C, D, 1)
+graph.add_edge(D, E, 3)
+
+# Print graph
+graph.print_graph()
+
+# Run Prim's Algorithm
+result = graph.prim(A)
+
+end_time = time.perf_counter()
+
+# Get memory usage
+current, peak = tracemalloc.get_traced_memory()
+tracemalloc.stop()
+
+# Print Minimum Spanning Tree
+if result is not None:
+    mst, total_weight = result
+
+    print("\nMinimum Spanning Tree:")
+
+    for u, v, weight in mst:
+        print(f"{u.data} - {v.data} = {weight}")
+
+    print("Total MST weight:", total_weight)
+
+print("\nPerformance:")
+print(f"Execution time: {(end_time - start_time) * 1000:.6f} ms")
+print(f"Current memory: {current / 1024:.2f} KB")
+print(f"Peak memory: {peak / 1024:.2f} KB")
+
+```
+sample output
+<img width="320" height="481" alt="image" src="https://github.com/user-attachments/assets/0c8752bc-4a64-4215-bb74-73bfe89212a4" />
+back to index
+<a id="program-25"></a>
+Program Krushal alogorithm
+
+Aim Write a Python program to find the Minimum Spanning Tree (MST) and its total weight using Kruskal’s algorithm.
+Program 25
+```python
+
+import time
+import tracemalloc
+
+tracemalloc.start()
+start_time = time.perf_counter()
+
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.neighbors = []
+
+
+class Graph:
+    def __init__(self):
+        self.nodes = []
+        self.edges = []
+
+    def add_node(self, data):
+        node = Node(data)
+        self.nodes.append(node)
+        return node
+
+    # Undirected weighted edge
+    def add_edge(self, u, v, weight):
+        u.neighbors.append((v, weight))
+        v.neighbors.append((u, weight))
+        self.edges.append((weight, u, v))
+
+    def print_graph(self):
+        for node in self.nodes:
+            print(node.data, ":", end=" ")
+            print(", ".join(
+                f"{v.data}({w})" for v, w in node.neighbors
+            ))
+
+    def kruskal(self):
+        parent = {node: node for node in self.nodes}
+        rank = {node: 0 for node in self.nodes}
+
+        def find(node):
+            if parent[node] != node:
+                parent[node] = find(parent[node])
+            return parent[node]
+
+        def union(u, v):
+            root_u = find(u)
+            root_v = find(v)
+
+            if root_u == root_v:
+                return False
+
+            if rank[root_u] < rank[root_v]:
+                parent[root_u] = root_v
+            elif rank[root_u] > rank[root_v]:
+                parent[root_v] = root_u
+            else:
+                parent[root_v] = root_u
+                rank[root_u] += 1
+
+            return True
+
+        mst = []
+        total_weight = 0
+
+        # Sort edges by weight
+        sorted_edges = sorted(self.edges, key=lambda edge: edge[0])
+
+        for weight, u, v in sorted_edges:
+            if union(u, v):
+                mst.append((u, v, weight))
+                total_weight += weight
+
+            if len(mst) == len(self.nodes) - 1:
+                break
+
+        if len(mst) != len(self.nodes) - 1:
+            print("Graph is disconnected; MST not possible.")
+            return None
+
+        return mst, total_weight
+
+
+# Create graph
+graph = Graph()
+
+A = graph.add_node("A")
+B = graph.add_node("B")
+C = graph.add_node("C")
+D = graph.add_node("D")
+E = graph.add_node("E")
+
+# Add undirected weighted edges
+graph.add_edge(A, B, 4)
+graph.add_edge(A, C, 2)
+graph.add_edge(B, D, 5)
+graph.add_edge(C, D, 1)
+graph.add_edge(D, E, 3)
+
+# Print graph
+graph.print_graph()
+
+# Run Kruskal's Algorithm
+result = graph.kruskal()
+
+end_time = time.perf_counter()
+
+# Get memory usage
+current, peak = tracemalloc.get_traced_memory()
+tracemalloc.stop()
+
+# Print MST
+if result is not None:
+    mst, total_weight = result
+
+    print("\nMinimum Spanning Tree:")
+
+    for u, v, weight in mst:
+        print(f"{u.data} - {v.data} = {weight}")
+
+    print("Total MST weight:", total_weight)
+
+# Performance
+print("\nPerformance:")
+print(f"Execution time: {(end_time - start_time) * 1000:.6f} ms")
+print(f"Current memory: {current / 1024:.2f} KB")
+print(f"Peak memory: {peak / 1024:.2f} KB")
+
+```
+sample output
+<img width="482" height="492" alt="image" src="https://github.com/user-attachments/assets/ba8a8c17-ee2d-4ab4-8d7f-b29c72913a89" />
+back to index
+<a id="program-26"></a>
+Program 26
+```python
+
+INF = float('inf')
+
+n = int(input("Enter number of vertices: "))
+
+print("Enter the adjacency matrix (use INF for no edge):")
+
+dist = []
+
+for i in range(n):
+    row = input().split()
+    dist.append([
+        INF if x.upper() == "INF" else int(x)
+        for x in row
+    ])
+
+for k in range(n):
+    for i in range(n):
+        for j in range(n):
+            dist[i][j] = min(
+                dist[i][j],
+                dist[i][k] + dist[k][j]
+            )
+
+print("Shortest Distance Matrix:")
+
+for row in dist:
+    print(row)
+```
+Sample output
+<img width="856" height="142" alt="image" src="https://github.com/user-attachments/assets/d8325371-aa96-44f9-a44d-3f8fe5ab3f7a" />
+
+back to index
+<a id="program-27"></a>
+Program 27
+```python
+
+def greedy_knapsack():
+    n = int(input("Enter number of items: "))
+
+    weights = []
+    profits = []
+
+    # Input weights
+    print("\nEnter weights of items:")
+    for i in range(n):
+        w = int(input(f"Weight of item {i+1}: "))
+        weights.append(w)
+
+    # Input profits
+    print("\nEnter profits of items:")
+    for i in range(n):
+        p = int(input(f"Profit of item {i+1}: "))
+        profits.append(p)
+
+    # Input capacity
+    capacity = int(input("\nEnter knapsack capacity: "))
+
+    # Calculate profit/weight ratio
+    items = []
+
+    for i in range(n):
+        ratio = profits[i] / weights[i]
+        items.append((ratio, weights[i], profits[i], i+1))
+
+    # Sort by decreasing ratio
+    items.sort(reverse=True)
+
+    total_profit = 0
+    total_weight = 0
+
+    print("\nSelected Items:")
+
+    for ratio, weight, profit, item_no in items:
+
+        if total_weight + weight <= capacity:
+            total_weight += weight
+            total_profit += profit
+
+            print("Item:", item_no,
+                  "Weight:", weight,
+                  "Profit:", profit)
+
+    print("\nTotal Weight:", total_weight)
+    print("Total Profit:", total_profit)
+
+
+# Function call
+greedy_knapsack()
+
+```
+Sample Output
+<img width="678" height="415" alt="image" src="https://github.com/user-attachments/assets/79ffabcc-3ccd-418b-acba-6a11e293a9c5" />
+
+back to index
+<a id="program-28"></a>
+Program 28
+```python
+
+def fractional_knapsack():
+
+    n = int(input("Enter number of items: "))
+
+    weights = []
+    profits = []
+
+    # Input weights
+    print("\nEnter weights of items:")
+    for i in range(n):
+        w = float(input(f"Weight of item {i+1}: "))
+        weights.append(w)
+
+    # Input profits
+    print("\nEnter profits of items:")
+    for i in range(n):
+        p = float(input(f"Profit of item {i+1}: "))
+        profits.append(p)
+
+    # Input capacity
+    capacity = float(input("\nEnter knapsack capacity: "))
+
+    # Calculate profit/weight ratio
+    items = []
+
+    for i in range(n):
+        ratio = profits[i] / weights[i]
+        items.append((ratio, weights[i], profits[i], i+1))
+
+    # Sort by descending ratio
+    items.sort(reverse=True)
+
+    total_profit = 0
+    total_weight = 0
+
+    print("\nSelected Items:")
+
+    for ratio, weight, profit, item_no in items:
+
+        if capacity <= 0:
+            break
+
+        if capacity >= weight:
+
+            # Take complete item
+            capacity -= weight
+            total_weight += weight
+            total_profit += profit
+
+            print("Item:", item_no,
+                  "Fraction: 1",
+                  "Profit:", profit)
+
+        else:
+
+            # Take fractional item
+            fraction = capacity / weight
+
+            total_profit += profit * fraction
+            total_weight += capacity
+
+            print("Item:", item_no,
+                  "Fraction:", round(fraction, 2),
+                  "Profit:", round(profit * fraction, 2))
+
+            capacity = 0
+
+    print("\nTotal Weight:", round(total_weight, 2))
+    print("Total Profit:", round(total_profit, 2))
+
+
+# Main Program
+fractional_knapsack()
+
+```
+Sample output
+<img width="444" height="436" alt="image" src="https://github.com/user-attachments/assets/8e542e99-2320-493d-804e-e7e95e1b9dab" />
+back to index
+
 
 
 
